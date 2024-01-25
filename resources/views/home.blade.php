@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{ $title }}</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <!-- Custom Stylesheet -->
-    <link href="./assets/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="../assets/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -42,10 +42,10 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="/home">
-                    <b class="logo-abbr"><img src="./assets/images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="./assets/images/logo-compact.png" alt=""></span>
+                    <b class="logo-abbr"><img src="../assets/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="..assets/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
-                        <p style="color: white; font-size:larger; font-weight:bold;">Cashier Apps</p>
+                        <p style="color: white; font-size:larger; font-weight:bold;">{{$title}}</p>
                     </span>
                 </a>
             </div>
@@ -83,7 +83,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="./assets/images/user/1.png" height="40" width="40" alt="">
+                                <img src="../assets/images/user/1.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -91,7 +91,7 @@
                                         <li>
                                             <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="{{route('logout')}}"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -110,7 +110,14 @@
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">Dashboard</li>
+
+                    <!--**********************************
+                    Admin Section Start
+                    ***********************************-->
+                    @php
+                    if($role == 'admin'):
+                    @endphp
+                        <li class="nav-label">Dashboard</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Master Data</span>
@@ -137,6 +144,31 @@
                             <i class="">!!</i><span class="nav-text">Report</span>
                         </a>
                     </li>
+                    @php
+                    endif;
+                    @endphp
+                    <!--**********************************
+                    Admin Section end
+                    ***********************************-->
+
+                    <!--**********************************
+                    Cashier Section Start
+                    ***********************************-->
+                    @php
+                    if($role == 'cashier'):
+                    @endphp
+                        <li class="nav-label">Dashboard</li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="" href="javascript:void()" aria-expanded="false">
+                            <i class="">$</i><span class="nav-text">Transaction</span>
+                        </a>
+                    </li>
+                    @php
+                    endif;
+                    @endphp
+                    <!--**********************************
+                    Cashier Section end
+                    ***********************************-->
                 </ul>
             </div>
         </div>
@@ -221,15 +253,15 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="./assets/plugins/common/common.min.js"></script>
-    <script src="./assets/js/custom.min.js"></script>
-    <script src="./assets/js/settings.js"></script>
-    <script src="./assets/js/gleek.js"></script>
-    <script src="./assets/js/styleSwitcher.js"></script>
+    <script src="../assets/plugins/common/common.min.js"></script>
+    <script src="../assets/js/custom.min.js"></script>
+    <script src="../assets/js/settings.js"></script>
+    <script src="../assets/js/gleek.js"></script>
+    <script src="../assets/js/styleSwitcher.js"></script>
 
-    <script src="./assets/plugins/tables/js/jquery.dataTables.min.js"></script>
-    <script src="./assets/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
-    <script src="./assets/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+    <script src="../assets/plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="../assets/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
 
 </body>
 

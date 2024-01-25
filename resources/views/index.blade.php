@@ -42,7 +42,7 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 <a class="text-center"> <h4>Login</h4></a>
-                                <form class="mt-5 mb-5 login-input" method="POST" action="">
+                                <form class="mt-5 mb-5 login-input" method="POST">
                                 @csrf
                                     <div class="form-group">
                                         <input type="email" class="form-control" name="email" placeholder="Email" required>

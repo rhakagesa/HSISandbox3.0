@@ -17,11 +17,11 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->update([
-            'name'      => 'admin',
-            'email'     => 'admin@gmail.com',
-            'password'  =>  Hash::make('admin'),
-            'role'      => 'admin', 
+        DB::table('users')->insert([
+            'name'      => 'cashier3',
+            'email'     => 'cashier3@gmail.com',
+            'password'  =>  Hash::make('cashier3'),
+            'role'      => 'cashier', 
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
