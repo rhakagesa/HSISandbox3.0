@@ -14,19 +14,17 @@ class UserAccess
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, ...$role): Response
     {
-        if(Auth::User()->role == $role){
+        if(Auth::check() && in_array(Auth::User()->role, $role)){
             return $next($request);
         }
 
-        switch (Auth::User()->role) {
-            case 'admin':
-                return redirect('/admin/home');
-            case 'cashier':
-                return redirect('/cashier/home');
-            default:
-                return redirect('/');
+        if (Auth::check()){
+            return redirect('/'.Auth::User()->role.'/home');
+        }
+        else {
+            return redirect('/');
         }
     }
 }

@@ -51,6 +51,9 @@
                                         <input type="password" class="form-control" name="password" placeholder="Password" required>
                                     </div>
                                     <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
+                                    @if ($errors->has('invalid'))
+                                        <span class="text-danger">{{$errors->first('invalid')}}</span>
+                                    @endif
                                 </form>
                             </div>
                         </div>
