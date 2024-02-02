@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Alert;
 
 class UserController extends Controller
 {
@@ -32,8 +33,8 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->role
         ]);
-        
-        return redirect('/user')->with('success', 'Created data success');
+        Alert::success('User Created', 'creating user success!');
+        return redirect('/user');
     }
 
     /**
@@ -48,7 +49,8 @@ class UserController extends Controller
             'role' => $request->role
         ]);
         
-        return redirect('/user')->with('success', 'Data updated');
+        Alert::success('User Updated', 'updating user success!');
+        return redirect('/user');
     }
 
     /**
@@ -60,11 +62,13 @@ class UserController extends Controller
         $user = User::find($id);
 
         if(!$user){
-            return redirect('/user')->with('error', 'User not found');            
+            Alert::warning('User Not Found', 'user not found!');
+            return redirect('/user');            
         } 
         else {
             $user->delete();
-            return redirect('/user')->with('success', 'User has been remove');            
+            Alert::success('User Removed', 'removing user success!');
+            return redirect('/user');            
         }
     }
 }
