@@ -8,7 +8,6 @@ use Alert;
 
 class ItemTypeController extends Controller
 {
-    //
     /**
      * Display a listing of the resource.
      */
