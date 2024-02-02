@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ItemTypeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CashierController;
@@ -27,10 +28,17 @@ Route::middleware(['auth', 'user.access:admin,cashier'])->group(function () {
 });
 
 Route::middleware(['auth', 'user.access:admin'])->group(function () {
+    //CRUD User
     Route::get('/user', [UserController::class, 'index']);
     Route::post('/user/store', [UserController::class, 'store']);
     Route::post('/user/update/{id}', [UserController::class, 'update']);
     Route::get('/user/destroy/{id}', [UserController::class, 'destroy']);
+
+    //CRUD Item Type
+    Route::get('/itemtype', [ItemTypeController::class, 'index']);
+    Route::post('/itemtype/store', [ItemTypeController::class, 'store']);
+    Route::post('/itemtype/update/{id}', [ItemTypeController::class, 'update']);
+    Route::get('/itemtype/destroy/{id}', [ItemTypeController::class, 'destroy']);
 });
 
 Route::middleware(['auth', 'user.access:cashier'])->group(function () {
