@@ -47,8 +47,8 @@
                                     <td>{{$no++}}</td>
                                     <td>{{$items->item_name}}</td>
                                     <td>{{$items->name_item_type}}</td>
-                                    <td>{{$items->item_price}}</td>
-                                    <td>{{$items->stocks}}</td>
+                                    <td>{{'Rp. '.number_format($items->item_price, 0, '.', ',')}}</td>
+                                    <td>{{number_format($items->stocks, 0, '.', ',')}}</td>
                                     <td>
                                         <a href="#itemEdit{{$items->id}}" data-toggle="modal" class="btn btn-xs btn-success"><i class="fa fa-edit"></i>Edit</a>
                                         <a href="#itemDelete{{$items->id}}" data-toggle="modal" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Remove</a>
@@ -93,11 +93,21 @@
                 </div>  
                 <div class="form-group">
                     <label for="item_price">Item Price</label>
-                    <input type="number" class="form-control" name="item_price" placeholder="Item Price" required>
+                    <div class="input-group mb-3">
+                        <div 
+                            class="input-group-prepend"><span class="input-group-text">Rp.</span>
+                        </div>
+                        <input type="number" class="form-control" name="item_price" placeholder="Price" required>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="stocks">Stock</label>
-                    <input type="number" class="form-control" name="stocks" placeholder="Stock" required>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" name="stocks" placeholder="Stock" required>
+                        <div 
+                            class="input-group-append"><span class="input-group-text">Pcs</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
