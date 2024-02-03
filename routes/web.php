@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemTypeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CashierController;
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -26,6 +27,8 @@ Route::middleware(['guest'])->group(function(){
 Route::middleware(['auth', 'user.access:admin,cashier'])->group(function () {
     Route::get('/home', [AdminController::class, 'index']);    
     Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/profile', [UserController::class, 'profile']);
+    Route::post('/profile/update/{id}', [UserController::class, 'updateprofile']);
 });
 
 Route::middleware(['auth', 'user.access:admin'])->group(function () {
@@ -46,8 +49,12 @@ Route::middleware(['auth', 'user.access:admin'])->group(function () {
     Route::post('/item/store', [ItemController::class, 'store']);
     Route::post('/item/update/{id}', [ItemController::class, 'update']);
     Route::get('/item/destroy/{id}', [ItemController::class, 'destroy']);
+
+    //Set Discount
+    Route::get('/discount', [DiscountController::class, 'index']);
+    Route::post('/discount/update/{id}', [DiscountController::class, 'update']);
 });
 
 Route::middleware(['auth', 'user.access:cashier'])->group(function () {
-    // Your protected routes for cashier role only
+   
 });

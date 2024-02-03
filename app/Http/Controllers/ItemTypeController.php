@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ItemType;
-use Alert;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ItemTypeController extends Controller
 {
@@ -12,7 +12,7 @@ class ItemTypeController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
-        $title = "Admin Page";
+        $title = "Item Type Page";
         $itemTypeData = ItemType::all();
 
         return view('admin/master/itemtype/itemtype', [

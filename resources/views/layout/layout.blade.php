@@ -89,7 +89,7 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a href="/profile"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
@@ -127,7 +127,7 @@
                     </li>
                     <li class="nav-label">Other</li>
                     <li class="mega-menu mega-menu-sm">
-                        <a class="" href="javascript:void()" aria-expanded="false">
+                        <a class="" href="/discount" aria-expanded="false">
                             <i class="">%</i><span class="nav-text">Discount Setting</span>
                         </a>
                     </li>

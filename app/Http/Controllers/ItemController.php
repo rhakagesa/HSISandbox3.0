@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\ItemType;
-use Alert;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ItemController extends Controller
@@ -15,7 +15,7 @@ class ItemController extends Controller
      */
     public function index(){
         $data = array(
-            'title' => "Admin Page",
+            'title' => "Item Page",
             'itemTypeData' => ItemType::all(),
             'itemData' => Item::join('item_type', 'item_type.id', '=', 'items.item_type_id')
                         ->select('items.*', 'item_type.name_item_type')

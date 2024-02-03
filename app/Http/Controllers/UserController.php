@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -13,7 +15,7 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
-        $title = "Admin Page";
+        $title = "User Page";
         $userData = User::all();
 
         return view('admin/master/user/user', [
@@ -69,5 +71,32 @@ class UserController extends Controller
             Alert::success('User Removed', 'removing user success!');
             return redirect('/user');            
         }
+    }
+
+
+    //Profile
+    public function profile(){
+        $title = "Profile Page";
+        $user = Auth::User();
+        $userData = [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+        ];
+
+        return view('profile', [
+            'title' => $title,
+            'userData' => $userData]);
+    }
+
+    public function updateprofile(Request $request, string $id)
+    {
+        User::where('id',$id)->where('id',$id)->update([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        
+        Alert::success('User Updated', 'updating user success!');
+        return redirect('/profile');
     }
 }
